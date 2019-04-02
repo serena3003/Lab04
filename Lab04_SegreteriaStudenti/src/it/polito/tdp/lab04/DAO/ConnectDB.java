@@ -7,14 +7,11 @@ import java.sql.SQLException;
 public class ConnectDB {
 
 	static private final String jdbcUrl = "jdbc:mysql://localhost/iscritticorsi?user=root";
-	static private Connection connection = null;
 
 	public static Connection getConnection() {
 
 		try {
-			if (connection == null) {
-				connection = DriverManager.getConnection(jdbcUrl);
-			}
+				Connection connection = DriverManager.getConnection(jdbcUrl);
 			return connection;
 
 		} catch (SQLException e) {
