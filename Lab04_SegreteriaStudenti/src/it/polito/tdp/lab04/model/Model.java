@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.polito.tdp.lab04.DAO.CorsoDAO;
+import it.polito.tdp.lab04.DAO.StudenteDAO;
 
 public class Model {
 	
@@ -29,4 +30,9 @@ public class Model {
 		return nomiCorsi;
 	}
 
+	public String[] getStudenteFromMatricola(String m) {
+		StudenteDAO s = new StudenteDAO();
+		
+		return s.getStudenteFromMatricola(m);
+	}
 }

@@ -63,6 +63,9 @@ public class SegreteriaStudentiController {
     @FXML
     void doComplete(ActionEvent event) {
     	String m = txtMatricola.getText();
+    	String[] studente = model.getStudenteFromMatricola(m);
+    	txtNome.appendText(studente[0]);
+    	txtCognome.appendText(studente[1]);
     }
 
     @FXML
