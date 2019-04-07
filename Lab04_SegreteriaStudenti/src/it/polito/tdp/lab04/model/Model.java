@@ -28,15 +28,22 @@ public class Model {
 		return nomiCorsi;
 	}
 
-	public String[] getStudenteFromMatricola(String m) {
+	public Studente getStudenteFromMatricola(String m) {
 		StudenteDAO s = new StudenteDAO();
 		
-		return s.getStudenteFromMatricola(m);
+		Studente stud = new Studente(s.getStudenteFromMatricola(m)[0], s.getStudenteFromMatricola(m)[1],m);
+		return stud;
+		//return s.getStudenteFromMatricola(m);
 	}
 	
 	public List<Studente> getStudentiIscrittiAlCorso(String ncorso) {
 		CorsoDAO c = new CorsoDAO();
 		return c.getStudentiIscrittiAlCorso(ncorso);
 		
+	}
+
+	public List<Corso> cercaCorsi(String m) {
+		CorsoDAO c = new CorsoDAO();
+		return c.getCorsiIscritto(m);
 	}
 }

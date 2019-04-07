@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.lab04.DAO.CorsoDAO;
+import it.polito.tdp.lab04.model.Corso;
 import it.polito.tdp.lab04.model.Model;
 import it.polito.tdp.lab04.model.Studente;
 import javafx.event.ActionEvent;
@@ -53,6 +54,17 @@ public class SegreteriaStudentiController {
 
     @FXML
     void handleCercaCorsi(ActionEvent event) {
+    	String m = txtMatricola.getText();
+    	Studente studente = model.getStudenteFromMatricola(m);
+    	if((studente.getNome()==null)&&(studente.getCognome()==null)) {
+    		txtResult.appendText("Studente non presente nel database!\n");
+    	} else {
+    		List<Corso> corsi = model.cercaCorsi(m);
+    		for(Corso c : corsi) {
+    			txtResult.appendText(c.toString()+"\n");
+    		}
+    	}
+    	
 
     }
 
@@ -72,9 +84,9 @@ public class SegreteriaStudentiController {
     @FXML
     void doComplete(ActionEvent event) {
     	String m = txtMatricola.getText();
-    	String[] studente = model.getStudenteFromMatricola(m);
-    	txtNome.appendText(studente[0]);
-    	txtCognome.appendText(studente[1]);
+    	Studente studente = model.getStudenteFromMatricola(m);
+    	txtNome.appendText(studente.getNome());
+    	txtCognome.appendText(studente.getCognome());
     }
 
     @FXML
