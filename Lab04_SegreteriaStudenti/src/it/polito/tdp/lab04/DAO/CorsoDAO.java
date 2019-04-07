@@ -38,6 +38,8 @@ public class CorsoDAO {
 
 				// Crea un nuovo JAVA Bean Corso
 				// Aggiungi il nuovo oggetto Corso alla lista corsi
+				Corso c = new Corso(codins, numeroCrediti, nome, periodoDidattico);
+				corsi.add(c);
 			}
 
 			return corsi;
@@ -51,21 +53,21 @@ public class CorsoDAO {
 	/*
 	 * Dato un codice insegnamento, ottengo il corso
 	 */
-	public void getCorso(Corso corso) {
-		// TODO
+	public Corso getCorso(String cod) {
+		return null;
 	}
 
 	/*
 	 * Ottengo tutti gli studenti iscritti al Corso
 	 */
-	public void getStudentiIscrittiAlCorso(Corso corso) {
-		// TODO
+	public List<Studente> getStudentiIscrittiAlCorso(Corso corso) {
+		return null;
 	}
 
 	/*
 	 * Data una matricola ed il codice insegnamento, iscrivi lo studente al corso.
 	 */
-	public boolean inscriviStudenteACorso(Studente studente, Corso corso) {
+	public boolean inscriviStudenteACorso(String matr, String cod) {
 		// TODO
 		// ritorna true se l'iscrizione e' avvenuta con successo
 		return false;
