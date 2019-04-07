@@ -35,5 +35,11 @@ public class Studente {
 	public void setMatricola(String matricola) {
 		this.matricola = matricola;
 	}
+
+	@Override
+	public String toString() {
+		return "Studente nome=" + nome + ", cognome=" + cognome + ", matricola=" + matricola + "";
+	}
+	
 	
 }

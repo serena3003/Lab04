@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import it.polito.tdp.lab04.DAO.CorsoDAO;
 import it.polito.tdp.lab04.model.Model;
+import it.polito.tdp.lab04.model.Studente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -57,7 +58,15 @@ public class SegreteriaStudentiController {
 
     @FXML
     void handleCercaIscritti(ActionEvent event) {
-
+    	String nomec = corsi.getValue();
+    	if (nomec.equals(" ")) {
+    		txtResult.appendText("Corso errato.");
+    	} else {
+    		List<Studente> res = model.getStudentiIscrittiAlCorso(nomec);
+    		for(Studente s : res ) {
+    			txtResult.appendText(s.toString() + "\n");
+    		}
+    	}
     }
     
     @FXML

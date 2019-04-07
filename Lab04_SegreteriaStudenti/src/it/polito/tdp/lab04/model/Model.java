@@ -11,7 +11,6 @@ public class Model {
 	public Model() {
 	}
 
-
 	public List<Corso> getTuttiICorsi() {
 		
 		CorsoDAO c = new CorsoDAO();
@@ -26,7 +25,6 @@ public class Model {
 		List<String> nomiCorsi = new ArrayList<>();
 		for(Corso c: corsi)
 			nomiCorsi.add(c.getNome());
-
 		return nomiCorsi;
 	}
 
@@ -34,5 +32,11 @@ public class Model {
 		StudenteDAO s = new StudenteDAO();
 		
 		return s.getStudenteFromMatricola(m);
+	}
+	
+	public List<Studente> getStudentiIscrittiAlCorso(String ncorso) {
+		CorsoDAO c = new CorsoDAO();
+		return c.getStudentiIscrittiAlCorso(ncorso);
+		
 	}
 }
