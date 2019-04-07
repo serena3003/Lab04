@@ -54,18 +54,24 @@ public class SegreteriaStudentiController {
 
     @FXML
     void handleCercaCorsi(ActionEvent event) {
+    	String nomec = corsi.getValue();
     	String m = txtMatricola.getText();
     	Studente studente = model.getStudenteFromMatricola(m);
-    	if((studente.getNome()==null)&&(studente.getCognome()==null)) {
+    	if((studente.getNome()==null)&&(studente.getCognome()==null)&&(nomec.equals(" "))) {
     		txtResult.appendText("Studente non presente nel database!\n");
-    	} else {
+    	} else if (nomec.equals(" ")){
     		List<Corso> corsi = model.cercaCorsi(m);
     		for(Corso c : corsi) {
     			txtResult.appendText(c.toString()+"\n");
     		}
+    	}else{
+    		boolean x = model.confrontaIscritti(m,nomec);
+    		if(!x) {
+    			txtResult.appendText("Studente non iscritto al corso\n");
+    		}else {
+    			txtResult.appendText("Studente iscritto al corso\n");
+    		}
     	}
-    	
-
     }
 
     @FXML

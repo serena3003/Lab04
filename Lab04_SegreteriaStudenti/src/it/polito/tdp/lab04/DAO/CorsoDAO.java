@@ -54,6 +54,36 @@ public class CorsoDAO {
 	 * Dato un codice insegnamento, ottengo il corso
 	 */
 	public Corso getCorso(String cod) {
+		final String sql = "SELECT * " + 
+				"FROM  corso " + 
+				"WHERE codins=? ";
+
+		try {
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement st = conn.prepareStatement(sql);
+
+			ResultSet rs = st.executeQuery();
+			st.setString(1, cod);
+
+			while (rs.next()) {
+
+				String codins = rs.getString("codins");
+				int numeroCrediti = rs.getInt("crediti");
+				String nome = rs.getString("nome");
+				int periodoDidattico = rs.getInt("pd");
+
+				//System.out.println(codins + " " + numeroCrediti + " " + nome + " " + periodoDidattico);
+
+				// Crea un nuovo JAVA Bean Corso
+				// Aggiungi il nuovo oggetto Corso alla lista corsi
+				Corso c = new Corso(codins, numeroCrediti, nome, periodoDidattico);
+				return c;
+				}
+
+		} catch (SQLException e) {
+			// e.printStackTrace();
+			throw new RuntimeException("Errore Db", e);
+		}
 		return null;
 	}
 
@@ -133,6 +163,7 @@ public class CorsoDAO {
 		}
 		
 	}
+	
 	/*
 	 * Data una matricola ed il codice insegnamento, iscrivi lo studente al corso.
 	 */
@@ -141,4 +172,45 @@ public class CorsoDAO {
 		// ritorna true se l'iscrizione e' avvenuta con successo
 		return false;
 	}
+
+	public boolean studenteIscritto(String matr, String nomec) {
+
+		final String sql = "SELECT * " + 
+				"FROM  corso c, iscrizione i, studente s " + 
+				"WHERE c.codins=i.codins AND s.matricola=i.matricola AND c.nome = ? " + 
+				"AND s.matricola = ? ";
+		String nome = null;
+		//String cognome = null;
+
+		try {
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement st = conn.prepareStatement(sql);
+			st.setString(1, nomec);
+			st.setString(2, matr);
+
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+
+				nome = rs.getString("s.nome");
+				//cognome = rs.getString("s.cognome");
+
+				//System.out.println(codins + " " + numeroCrediti + " " + nome + " " + periodoDidattico);
+
+				// Crea un nuovo JAVA Bean Corso
+				// Aggiungi il nuovo oggetto Corso alla lista corsi
+			}
+			
+			if(nome == null) {
+				return false;
+			}else
+				return true;	
+			
+		} catch (SQLException e) {
+			// e.printStackTrace();
+			throw new RuntimeException("Errore Db", e);
+		}
+	}
+
+
 }

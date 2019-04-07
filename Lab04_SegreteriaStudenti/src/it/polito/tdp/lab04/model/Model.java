@@ -46,4 +46,10 @@ public class Model {
 		CorsoDAO c = new CorsoDAO();
 		return c.getCorsiIscritto(m);
 	}
+
+	public boolean confrontaIscritti(String m, String nomec) {
+		CorsoDAO cdao = new CorsoDAO();
+		
+		return cdao.studenteIscritto(m, nomec);
+	}
 }
