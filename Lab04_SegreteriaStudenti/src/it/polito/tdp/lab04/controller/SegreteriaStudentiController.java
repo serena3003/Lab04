@@ -51,6 +51,9 @@ public class SegreteriaStudentiController {
     
     @FXML
     private Button btnAuto;
+    
+    @FXML
+    private Button btnIscrivi;
 
     @FXML
     void handleCercaCorsi(ActionEvent event) {
@@ -102,6 +105,20 @@ public class SegreteriaStudentiController {
     	txtNome.clear();
     	txtMatricola.clear();
     }
+    
+    @FXML
+    void doIscrizione(ActionEvent event) {
+    	String nomec = corsi.getValue();
+    	String m = txtMatricola.getText();
+    	/*boolean x = model.confrontaIscritti(m,nomec);
+		if(x) {
+			txtResult.appendText("Studente iscritto al corso\n");
+		}else {*/
+			boolean y = model.iscriviStudente(m, nomec);
+			if (y) {
+				txtResult.appendText("Studente " + m+ " iscritto al corso " +nomec+" \n");
+			}
+			}
 
     @FXML
     void initialize() {
@@ -114,6 +131,7 @@ public class SegreteriaStudentiController {
         assert txtResult != null : "fx:id=\"txtResult\" was not injected: check your FXML file 'SegreteriaStudenti.fxml'.";
         assert btnReset != null : "fx:id=\"btnReset\" was not injected: check your FXML file 'SegreteriaStudenti.fxml'."; 
         assert btnAuto != null : "fx:id=\"btnAuto\" was not injected: check your FXML file 'SegreteriaStudenti.fxml'.";
+        assert btnIscrivi != null : "fx:id=\"btnIscrivi\" was not injected: check your FXML file 'SegreteriaStudenti.fxml'.";
        }
     
     public void setModel(Model model) {

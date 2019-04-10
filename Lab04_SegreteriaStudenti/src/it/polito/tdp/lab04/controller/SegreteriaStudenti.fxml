@@ -31,7 +31,15 @@
                   <ComboBox fx:id="corsi" prefWidth="150.0" />
                   <Button fx:id="btnCercaIscritti" mnemonicParsing="false" onAction="#handleCercaIscritti" prefHeight="31.0" prefWidth="178.0" text="Cerca iscritti al corso">
                      <HBox.margin>
-                        <Insets left="-1.0" />
+                        <Insets left="2.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnIscrivi" mnemonicParsing="false" onAction="#doIscrizione" prefHeight="29.0" prefWidth="103.0" text="Iscrivi">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets left="2.0" />
                      </HBox.margin>
                   </Button>
                </children>
@@ -47,9 +55,9 @@
                   <TextField fx:id="txtNome" prefHeight="31.0" prefWidth="132.0" />
                   <TextField fx:id="txtCognome" prefHeight="31.0" prefWidth="138.0" />
                   <Button fx:id="btnAuto" mnemonicParsing="false" onAction="#doComplete" />
-                  <Button fx:id="btnCercaCorsi" mnemonicParsing="false" onAction="#handleCercaCorsi" prefHeight="31.0" prefWidth="93.0" text="Cerca corsi">
+                  <Button fx:id="btnCercaCorsi" mnemonicParsing="false" onAction="#handleCercaCorsi" prefHeight="23.0" prefWidth="81.0" text="Cerca corsi">
                      <HBox.margin>
-                        <Insets left="-1.0" />
+                        <Insets left="2.0" />
                      </HBox.margin>
                   </Button>
                </children>

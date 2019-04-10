@@ -52,4 +52,11 @@ public class Model {
 		
 		return cdao.studenteIscritto(m, nomec);
 	}
+
+	public boolean iscriviStudente(String m, String nomec) {
+		CorsoDAO c = new CorsoDAO();
+		System.out.println("iscriviStudente");
+		Corso corso = c.getCorsoFromNome(nomec);
+		return c.inscriviStudenteACorso(m, corso.getCodins());
+	}
 }
